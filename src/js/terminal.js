@@ -44,7 +44,9 @@ function submit_command() {
         google(command + " " + args);
     }
 
-    block_log(config.shellPrompt + command + " " + args);
+    if (command != "neofetch") {
+        block_log(config.shellPrompt + command + " " + args);
+    }
 
     lastCommand = command + args;
 }

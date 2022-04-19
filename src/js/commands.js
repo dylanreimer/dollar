@@ -12,6 +12,22 @@ function clear(args) {
     document.getElementById('wrapper').innerHTML = "";
 }
 
+function neofetch(args) {
+
+    block_log("dylan@chrome");
+    block_log("------------");
+    block_log("OS: Chrome Extension OS");
+    block_log("Host: MacBook Pro");
+    block_log("Kernel: 7.77.77");
+    block_log("Uptime: 69 days, 4 hours, 20 mins");
+    block_log("Packages: 191 (chrome extension store)");
+    block_log("Shell: csh 5.7.1");
+    block_log("Terminal: iChrome2");
+    block_log("CPU: Intel i5-8279U (8) @ 2.40GHz");
+    block_log("GPU: Intel Iris Plus Graphics 655");
+    block_log("Memory: 11024MiB / 16384MiB");
+
+}
 
 
 
@@ -70,6 +86,11 @@ function soundcloud(args) {
     } else {
         window.open("https://soundcloud.com/cellofellooo/sets");
     }
+}
+
+gh = github;
+function github(args) {
+    window.open("https://github.com/dylanreimer?tab=repositories");
 }
 
 

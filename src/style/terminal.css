@@ -62,3 +62,7 @@ input {
 #input p {
     display: inline-block;
 }
+
+#screen::-webkit-scrollbar {
+    display: none;
+}
