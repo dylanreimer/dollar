@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "$",
+    "version": "1.0.0",
+    "description": "dollar - terminal themed homepage",
+    "chrome_url_overrides": {
+      "newtab": "index.html"
+    },
+    "icons": {
+      "32": "images/favicon.png",
+      "48": "images/favicon.png",
+      "96": "images/favicon.png",
+      "128": "images/favicon.png"
+    }
+  }

@@ -7,9 +7,9 @@ document.getElementById("input_title").innerText = config.shellPrompt;
 document.getElementById('input_source').addEventListener('keydown', submit_command);
 document.getElementById('input_source').addEventListener('keydown', getLastCommand);
 document.getElementById('input_source').addEventListener('keydown', getRecentCommand);
+document.addEventListener("click", getFocus);
 
 var current_block;
-
 
 function new_block() {
     current_block = document.createElement("div");
@@ -21,7 +21,6 @@ function block_log(message) {
     current_block.innerHTML = "<p>" + message + "</p>";
     new_block();
 }
-
 
 function getFocus() {
     document.getElementById("input_source").focus();
