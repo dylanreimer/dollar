@@ -22,26 +22,6 @@ function block_log(message) {
     new_block();
 }
 
-function setCaretPosition(elemId, caretPos) {
-    var elem = document.getElementById(elemId);
-
-    if(elem != null) {
-        if(elem.createTextRange) {
-            var range = elem.createTextRange();
-            range.move('character', caretPos);
-            range.select();
-            console.log("yay2")
-        }
-        else {
-            if(elem.selectionStart) {
-                elem.focus();
-                elem.setSelectionRange(caretPos, caretPos);
-            }
-            else
-                elem.focus();
-        }
-    }
-}
 
 function getFocus() {
     document.getElementById("input_source").focus();
@@ -54,26 +34,26 @@ function submit_command() {
 
     new_block();
 
-    command = input.split(" ")[0];
-    args = input.replace(command, "")
+    line = input.split(" ");
+    command = line[0];
+    args = input.replace(command, "").trim()
+    
 
     if (typeof window[command] === "function") {
-        block_log(config.shellPrompt + command + " " + args);
         window[command](args);
-        lastCommand = command + args;
     } else if (command != "") {
-        block_log("command not found : " + command);
+        google(command + " " + args);
     }
+
+    block_log(config.shellPrompt + command + " " + args);
+
+    lastCommand = command + args;
 }
 
 function getLastCommand() {
     if (!(event.keyCode === 38)) return;
     if (lastCommand) {
         document.getElementById("input_source").value = lastCommand;
-        
-        setCaretPosition('input_source', 99)
-
-        console.log("yay")
     }    
 }
 
