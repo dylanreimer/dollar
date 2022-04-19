@@ -13,6 +13,7 @@ var current_block;
 
 function new_block() {
     current_block = document.createElement("div");
+    current_block.style.paddingTop = "1px";
     current_block.classList.add("log");
     document.getElementById('wrapper').appendChild(current_block);
 }
