@@ -1,38 +1,78 @@
 
-// Display time
-// t = clock;
-// function clock(args) {
-//     var today = new Date();
-//     block_log(today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds());
-// }
+// -------------------------
+// emulation
+// -------------------------
 
-// Clear the terminal
 c = clear;
-function clear(args) {
+async function clear(args) {
     document.getElementById('wrapper').innerHTML = "";
 }
 
-function neofetch(args) {
+async function neofetch(args) {
+
+
+    await clear();
+
+    var versionraw = navigator.userAgent.match(/Chrome\/([0-9]+[\.]*)+/)[0];
+    var version = versionraw.split('\/')[1];
+
+    var hostsplit = navigator.userAgent.split('Macintosh; ')[1]
+    var host = hostsplit.split(')')[0]
+    
+    const eself = async () => {
+      await chrome.management.getSelf()
+        .then(function (result) {
+            block_log("Terminal: dollar " + result.version);
+        })
+        .catch(function (error) {
+          return error;
+        })
+    };
+
+    const ecount = async () => {
+        await chrome.management.getAll()
+          .then(function (result) {
+              block_log("Extensions: " + result.length);
+          })
+          .catch(function (error) {
+            return error;
+          })
+    }; 
+
+    var meminfo = window.performance.memory
+    var memlimit = Math.round(meminfo.jsHeapSizeLimit / 10**6)
+    var memused = Math.round(meminfo.usedJSHeapSize / 10**6)
+
+    block_log("<br />");
 
     block_log("dylan@chrome");
     block_log("------------");
-    block_log("OS: Chrome Extension OS");
-    block_log("Host: MacBook Pro");
-    block_log("Kernel: 7.77.77");
+    block_log("Browser: Chrome");
+    block_log("Version: " + version);
+    block_log("Host: " + host);
     block_log("Uptime: 69 days, 4 hours, 20 mins");
-    block_log("Packages: 191 (chrome extension store)");
-    block_log("Shell: csh 5.7.1");
-    block_log("Terminal: iChrome2");
-    block_log("CPU: Intel i5-8279U (8) @ 2.40GHz");
-    block_log("GPU: Intel Iris Plus Graphics 655");
-    block_log("Memory: 11024MiB / 16384MiB");
+    await eself()
+    await ecount()
+    // block_log("CPU: Intel i5-8279U (8) @ 2.40GHz");
+    // block_log("GPU: Intel Iris Plus Graphics 655");
+    // block_log("Memory: " + memused + "MB / " + memlimit + "MB");
+    
+    block_log("<br />");
 
 }
 
+function echo(args) {
+    block_log(args)
+}
+
+function time(args) {
+    var today = new Date();
+    block_log(today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds());
+}
 
 
 // -------------------------
-// common
+// websites
 // -------------------------
 
 
@@ -95,7 +135,6 @@ function github(args) {
 
 
 
-
 // -------------------------
 // school
 // -------------------------
@@ -111,31 +150,29 @@ function gradescope(args) {
 }
 
 
-
-
 // -------------------------
 // chrome
 // -------------------------
 
 
+// res = restart
 // function restart(args) {
 //     window.open("chrome://restart");
 // }
 
-
+// set = settings
 // function settings(args) {
 //     window.open("chrome://settings");
 // }
 
-
-// function ext(args) {
+// ext = extensions
+// function extensions(args) {
 //     window.open("chrome://extensions");
 // }
 
-// function history(args) {
+// his = userhistory
+// function userhistory(args) {
 //     window.open("chrome://history");
 // }
-
-
 
 

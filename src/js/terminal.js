@@ -39,17 +39,18 @@ function submit_command() {
     args = input.replace(command, "").trim()
     
 
+    if (command != "neofetch") {
+        block_log(config.shellPrompt + command + " " + args);
+    }
+
     if (typeof window[command] === "function") {
         window[command](args);
     } else if (command != "") {
         google(command + " " + args);
     }
 
-    if (command != "neofetch") {
-        block_log(config.shellPrompt + command + " " + args);
-    }
-
-    lastCommand = command + args;
+    lastCommand = command + " " + args;
+    
 }
 
 function getLastCommand() {
